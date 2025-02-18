@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt_Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./imagens/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="cadastro.css">
+    <title>Cadastre-se</title>
+</head>
+<body>
+
+    <nav class="menu">
+        <a href="./paginainicial.html"><img src="./imagens/Logo.png" alt="Logo"></a>
+        <button><a href="./paginainicial.html">Voltar</a></button>
+    </nav>
+
+    <!-- Tela de Seleção Inicial -->
+    <div id="telaInicial" style="align-items: center;">
+        <h1>Escolha o tipo de cadastro</h1>
+        <button onclick="mostrarFormulario('colaborador')">Colaborador</button>
+        <button onclick="mostrarFormulario('usuario')">Usuário</button>
+        <button onclick="mostrarFormulario('padrinho')">Padrinho</button>
+        <button onclick="mostrarFormulario('voluntario')">Voluntário</button>
+    </div>
+
+    <!-- Formulário -->
+    <div id="formulario" style="display:none;">
+        <div class="titulo">
+            <h1>Preencha seus Dados</h1>
+            <h2>Entraremos em contato com você</h2>
+            <p>Bem-vindo(a) ao nosso formulário de interesse.</p>
+            <p>Ficamos muito felizes por você ter dado o primeiro passo para ser um colaborador, usuário, padrinho ou voluntário PET.</p>
+        </div>
+
+        <div class="dados">
+            <div class="info">
+                <input type="text" placeholder="Nome Completo:" id="nome" required>
+                <input type="number" placeholder="Idade:" id="idade" required>
+                <input type="tel" placeholder="Telefone:" id="tel" required>
+                <input type="number" placeholder="CPF:" id="cpf" required>
+                <input type="email" placeholder="Email:" id="email" required>
+                <input type="text" placeholder="Endereço:" id="endereco" required>
+                <input type="text" placeholder="Complemento:" id="complemento">
+            </div>
+        </div>
+
+        <div class="btn"><button type="submit" onclick="enviar()">Enviar</button></div>
+        <div class="btn2"><button type="button" onclick="voltar()">Voltar</button></div>
+
+        <div class="banner2">
+            <h1>Desenvolvido por</h1>
+            <h1 id="font">LDGL</h1>
+        </div>
+    </div>
+
+    <script>
+        // Função para exibir o formulário com base na escolha do tipo de cadastro
+        function mostrarFormulario(tipo) {
+            // Esconde a tela inicial de escolha
+            document.getElementById("telaInicial").style.display = "none";
+            // Exibe o formulário
+            document.getElementById("formulario").style.display = "block";
+    
+            // Verifica o tipo e ajusta os campos do formulário
+            if (tipo === 'usuario') {
+                // Esconde os campos 'idade', 'endereco' e 'complemento' para o tipo 'usuario'
+                document.getElementById("idade").style.display = "none";
+                document.getElementById("endereco").style.display = "none";
+                document.getElementById("complemento").style.display = "none";
+            } else {
+                // Exibe todos os campos para os outros tipos
+                document.getElementById("idade").style.display = "block";
+                document.getElementById("endereco").style.display = "block";
+                document.getElementById("complemento").style.display = "block";
+            }
+        }
+    
+        // Função para voltar à tela de seleção
+        function voltar() {
+            document.getElementById("telaInicial").style.display = "block";
+            document.getElementById("formulario").style.display = "none";
+        }
+    
+        // Função de envio do formulário (com validações)
+        function enviar() {
+            // Coleta os valores dos campos do formulário
+            let nome = document.getElementById("nome").value;
+            let idade = document.getElementById("idade").value;
+            let tel = document.getElementById("tel").value;
+            let cpf = document.getElementById("cpf").value;
+            let email = document.getElementById("email").value;
+            let endereco = document.getElementById("endereco").value;
+            let complemento = document.getElementById("complemento").value;
+    
+            // Validação de idade (deve ser entre 18 e 90 anos)
+            if (idade < 18 || idade > 90) {
+                alert("Não foi possível continuar o cadastro pois o solicitante cometeu uma restrição de idade!");
+                return;
+            }
+    
+            // Validação de telefone (deve ter 11 dígitos)
+            if (tel.length !== 11) {
+                alert("O número de telefone deve ter 11 dígitos.");
+                return;
+            }
+    
+            // Função para validar o CPF
+            function validarCPF(cpf) {
+            // Remove caracteres não numéricos
+             cpf = cpf.replace(/[^\d]+/g, '');
+
+            // Verifica se o CPF tem 11 dígitos
+               if (cpf.length !== 11) {
+                 return false;
+       }
+
+          // Verifica se o CPF é uma sequência repetida (ex.: 111.111.111-11, 222.222.222-22, etc.)
+           if (/^(\d)\1{10}$/.test(cpf)) {
+            return false;
+       }
+
+          // Valida os dois últimos dígitos verificadores
+          let soma = 0;
+          let resto;
+
+          // Valida o primeiro dígito verificador
+          for (let i = 0; i < 9; i++) {
+         soma += parseInt(cpf.charAt(i)) * (10 - i);
+       }
+         resto = (soma * 10) % 11;
+          if (resto === 10 || resto === 11) {
+         resto = 0;
+    }
+    if (resto !== parseInt(cpf.charAt(9))) {
+        return false;
+    }
+
+    // Valida o segundo dígito verificador
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf.charAt(i)) * (11 - i);
+    }
+    resto = (soma * 10) % 11;
+    if (resto === 10 || resto === 11) {
+        resto = 0;
+    }
+    if (resto !== parseInt(cpf.charAt(10))) {
+        return false;
+    }
+
+    return true;
+}
+            // Validação de CPF (formato e validade)
+    if (!validarCPF(cpf)) {
+        alert("O CPF não é válido. Verifique o número e o formato.");
+        return;
+    }
+
+    
+            // Validação de email (deve ser um email válido)
+            let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, insira um e-mail válido.");
+                return;
+            }
+    
+            // Exemplo de exibição dos dados coletados (substitua isso com a lógica de envio real)
+            alert("Dados enviados com sucesso!\nNome: " + nome + "\nIdade: " + idade + "\nTelefone: " + tel + "\nEmail: " + email);
+    
+        
+            // Para fins de teste, vamos apenas ocultar o formulário e voltar à tela inicial após o envio
+            voltar(); // Voltar à tela inicial após o envio
+        }
+    </script>
+    
