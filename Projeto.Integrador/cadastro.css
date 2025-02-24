@@ -1,12 +1,21 @@
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+ 
+@font-face {
+    font-family: "zen kaku gothic new light";
+    src: url(../fontes/zen-kaku-gothic-new-light.ttf) format("truetype");
+}
 
 @font-face {
     font-family: "quantum";
     src: url(../fontes/Quantum.otf) format("truetype");
 }
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -78,170 +87,7 @@ body {
     margin-left: 30px;
 }
 
-/*-------Titulo-------*/
-.titulo {
-    width: 100%;
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-family: "Roboto Flex";
-}
 
-.titulo h1 {
-    color: var(--blue);
-    font-size: 50px;
-}
-
-.titulo h2 {
-    font-size: 30px;
-}
-
-.titulo p {
-    font-size: 20px;
-    color: gray;
-}
-
-/* Tela de Seleção Inicial */
-#telaInicial {
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: "Roboto Flex";
-    padding: 20px;
-    margin-top: 100px;
-}
-
-#telaInicial h1 {
-    font-size: 35px;
-    color: #1a1a1a;
-    margin-bottom: 30px;
-}
-
-#telaInicial button {
-    width: 80%;
-    max-width: 300px;
-    height: 50px;
-    background-color: var(--blue);
-    color: white;
-    font-size: 18px;
-    font-family: "Roboto Flex", sans-serif;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#telaInicial button:hover {
-    background-color: var(--dark-blue);
-    transform: translateY(-3px);
-}
-
-#telaInicial button:active {
-    background-color: var(--light-blue);
-    transform: translateY(1px);
-}
-
-/* Estilos do formulário */
-.dados {
-    width: 100%;
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 500px;
-}
-
-input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    width: 100%;
-}
-
-input:focus {
-    border-color: var(--blue);
-    box-shadow: 0 0 5px rgba(22, 160, 133, 0.5);
-}
-
-/* Estilo para o botão (btn) */
-.btn button {
-    width: 10%;
-    max-width: 200%;
-    height: 50px;
-    background-color: var(--blue);
-    color: var(--white);
-    font-size: 18px;
-    font-family: "Roboto Flex", sans-serif;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 56%;
-    margin-top: 60px;
-}
-
-.btn button:hover {
-    background-color: var(--dark-blue);
-    transform: translateY(-3px);
-}
-
-.btn button:active {
-    background-color: var(--light-blue);
-    transform: translateY(1px);
-}
-
-.btn2 button {
-    width: 10%;
-    max-width: 200%;
-    height: 50px;
-    background-color: var(--blue);
-    color: var(--white);
-    font-size: 18px;
-    font-family: "Roboto Flex", sans-serif;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 44%;
-    margin-top: -49px;
-}
-
-.btn2 button:hover {
-    background-color: var(--dark-blue);
-    transform: translateY(-3px);
-}
-
-.btn2 button:active {
-    background-color: var(--light-blue);
-    transform: translateY(1px);
-}
 
 /*-------Banner2-------*/
 .banner2 {
@@ -299,4 +145,9 @@ input:focus {
         width: 30%;
         margin-left: 33%;
     }
+}
+
+
+.post{
+    color: var(--light-blue);
 }
