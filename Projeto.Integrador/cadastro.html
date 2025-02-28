@@ -10,7 +10,7 @@
 <body>
 
     <nav class="menu">
-        <a href="./paginainicial.html"><img src="./imagens/Logo.png" alt="Logo"></a>
+        <!--<a href="./paginainicial.html"><img src="./imagens/Logo.png" alt="Logo"></a>-->
         <button><a href="./paginainicial.html">Voltar</a></button>
     </nav>
 
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Formulário de cadastro -->
-        <form method="POST" action="cadastrar.php" onsubmit="return validarFormulario()">       
+        <form method="POST" action="cadastrar.php" onsubmit="return validarFormulario()">
             <div class="info">
                 <input type="hidden" id="tipoCadastro" name="tipoCadastro">
                 <input type="text" id="nome" name="nome" placeholder="Nome Completo: " required>
@@ -51,7 +51,7 @@
         </form>
         
         <!-- Back button -->
-        <button onclick="voltar()">Voltar</button>
+        <div class="btn2"><button onclick="voltar()">Voltar</button></div>
         
         <!-- Banner section -->
         <div class="banner2">
@@ -59,9 +59,10 @@
             <h1 id="font">LDGL</h1>
         </div>
         
+
     <script>
-         // Função para exibir o formulário com base na escolha do tipo de cadastro
-         function mostrarFormulario(tipo) {
+        // Função para exibir o formulário com base na escolha do tipo de cadastro
+        function mostrarFormulario(tipo) {
              document.getElementById("telaInicial").style.display = "none";
              document.getElementById("formulario").style.display = "block";
 
@@ -74,6 +75,7 @@
             document.getElementById("telaInicial").style.display = "block";
             document.getElementById("formulario").style.display = "none";
 }
+
 
         // Função de validação antes do envio do formulário
         function validarFormulario() {
@@ -180,32 +182,6 @@
 #telaInicial button:active {
     background-color: var(--light-blue);
     transform: translateY(1px);
-}
-
-.titulo {
-    width: 94%;
-    height: 30vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-family: "Roboto Flex";
-    color: 0 4px 8px rgba(22, 22, 22, 0.568);
-    margin: 50px;
-}
-
-.titulo h1 {
-    color: var(--blue);
-    font-size: 50px;
-}
-
-.titulo h2 {
-    font-size: 30px;
-}
-
-.titulo p {
-    font-size: 20px;
-    color: gray;
 }
 
 

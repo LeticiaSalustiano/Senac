@@ -24,9 +24,10 @@
         <h3>Adotados e Amados - São Paulo</h3>
         <p><strong>Data:</strong> Feiras fixas aos sábados!</p>
         <p><strong>Local:</strong> Praça Benedito Calixto, Pinheiros, São Paulo</p>
+        <!--<div class="imgm"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6-nYHsrEUgJCCOnISco4kJiCWZ0t2-NBm3g&s"></div>-->
         <div id="qrcode1"></div> <!-- QR Code será gerado aqui -->
         <button onclick="generateQRCode('https:www.google.com/maps/place/Pra%C3%A7a+Benedito+Calixto+-+Pinheiros,+S%C3%A3o+Paulo+', 'qrcode1')">Gerar QR Code</button>
-        <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6-nYHsrEUgJCCOnISco4kJiCWZ0t2-NBm3g&s" alt="">-->
+        
     </div>
 
     <!-- Outra Feira -->
@@ -36,22 +37,31 @@
         <p><strong>Local:</strong> Avenida Embaixador Abelardo Bueno, 2660, Rio de Janeiro</p>
         <div id="qrcode2"></div> <!-- QR Code será gerado aqui -->
         <button onclick="generateQRCode('https:www.google.com/maps?q=Avenida+Embaixador+Abelardo+Bueno,+2660,+Rio+de+Janeiro', 'qrcode2')">Gerar QR Code</button>
-       <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT44iZoTrn2eyhX1DcgIFMc4RhFL0404Os6Nw&s" alt="">-->
+       <!--<div class="imgm"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT44iZoTrn2eyhX1DcgIFMc4RhFL0404Os6Nw&s" ></div>-->
     </div>
 </div>
 
 <script>
-    // Função para gerar QR Code
-    function generateQRCode(url, elementId) {
-        new QRCode(document.getElementById(elementId), {
-            text: url,
-            width: 128,
-            height: 128,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-    }
+    // Função para gerar QR Code sem duplicação
+function generateQRCode(url, elementId) {
+    // Verificar se já existe um QR Code gerado no elemento
+    const element = document.getElementById(elementId);
+    
+    // Limpar o conteúdo anterior, caso exista
+    element.innerHTML = "";
+
+    // Gerar o novo QR Code
+    new QRCode(element, {
+        text: url,
+        padding: 30,
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+}
+
 </script>
 
 <div class="banner2">
@@ -201,8 +211,18 @@ body {
     color: var(--dark-blue);
 }
 
+#qrcode1 {
+    margin-top: 20px
+    
+}
+
+#qrcode2 {
+    margin-top: 20px
+    
+}
+
 button {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 10px 20px;
     background-color: var(--blue);
     color: white;
@@ -224,10 +244,20 @@ button:hover {
     justify-content: center;
     background-color: var(--blue);
     color: var(--white);
-    margin-top: 150px;
+    margin-top: 90px;
     font-family: "Zen Kaku Gothic New";
     font-size: 10px;
     gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .feira-lista {
+        width: 100%;
+        padding: 10px;
+    }
+    .feira {
+        width: 100%;
+    }
 }
 
 </style>
