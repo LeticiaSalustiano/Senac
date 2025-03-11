@@ -1,3 +1,12 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'];
+    $idade = $_POST['idade'];
+    $raca = $_POST['raca'];
+    $imagem = $_POST['imagem'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./imagens/Logo.png" type="image/x-icon">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./Styles/formulario.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./formulario.css">
     <title>SAFE PET</title>
 </head>
 <body>
@@ -22,6 +31,18 @@
         <h2>entraremos em contato com você</h2>
         <p>Bem-vindo(a) ao nosso formulário de interesse.</p>
         <p>Ficamos muito felizes por você ter dado o primeiro passo para adotar, apadrinhar ou ser um voluntário PET.</p>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center" style="width: 100%; height: 70vh;">
+        <div class="card bg-info" style="width: 30rem;">
+            <img src="<?php echo $imagem; ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Nome: <?php echo $nome; ?></h5>
+                <h6 class="card-subtitle">Idade: <?php echo $idade; ?></h6>
+                <p class="card-text">Raça: <?php echo $raca; ?></p>
+                <a href="index.html" class="btn btn-dark">Voltar</a>
+            </div>
+        </div>
     </div>
  
     <div class="dados">
@@ -88,12 +109,8 @@
         </div>
     </div>
     <div class="banner2">
-        <h1>Desenvolvido por <span id="font">LDGL</span></h1>
-        <div class="redes">
-            <a href="https://pt-br.facebook.com/"><i class='bx bxl-facebook'></i></a>
-            <a href="https://www.instagram.com/"><i class='bx bxl-instagram'></i></a>
-            <a href="https://web.whatsapp.com/"><i class='bx bxl-whatsapp'></i></a>
-        </div>
+        <h1>Desenvolvido por</h1>
+        <h1 id="font">LDGL</h1>
     </div>
 </body>
 </html>

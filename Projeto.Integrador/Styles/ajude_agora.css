@@ -237,19 +237,51 @@ button{
     height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: var(--blue);
     color: var(--white);
     margin-top: 150px;
     font-family: "Zen Kaku Gothic New";
     font-weight: 400;
     gap: 10px;
+    padding: 0 20px;
 }
-
+ 
 /*-------Fonte-------*/
 #font{
     font-family: 'quantum';
 }
+ 
+/*---Redes---*/
+.redes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+ 
+.redes a{
+    text-decoration: none;
+    color: var(--white);
+}
+ 
+.redes i{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-blue);
+    border-radius: 50%;
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+ 
+.redes i:hover{
+    color: var(--blue);
+}
+ 
 
 /*--------Responsividade--------*/
 

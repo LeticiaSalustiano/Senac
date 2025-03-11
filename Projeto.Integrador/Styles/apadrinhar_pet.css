@@ -1,10 +1,11 @@
 @charset "UTF-8";
+/* Importação de Fontes */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
- 
+
 @font-face {
     font-family: "zen kaku gothic new light";
     src: url(../fontes/zen-kaku-gothic-new-light.ttf) format("truetype");
@@ -15,55 +16,54 @@
     src: url(../fontes/Quantum.otf) format("truetype");
 }
 
-*{
+/* Reset de Estilos */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 /*-------Cores-------*/
-:root{
+:root {
     --blue: #14C5EC;
     --light-blue: #BBEEF9;
     --dark-blue: #095f72;
     --white: #EDFBFE;
 }
 
-body{   
-    margin: 0px;
-    padding: 0px;
-    box-sizing:border-box;
+/* Estilos Gerais do Corpo */
+body {
     color: #1e1e1e;
     height: 100vh;
     width: 100%;
-    background-color: var(--white);          
+    background-color: var(--white);
+    font-family: 'Roboto', sans-serif;
 }
 
 /*-------Menu-------*/
-.menu{
-    width: 100%;
-    height: 14vh;
+.menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--blue);
-    font-family: "Roboto Flex";
+    font-family: "Roboto Flex", sans-serif;
     padding: 20px;
+    height: 14vh;
 }
 
-.menu li{
+.menu li {
     display: inline-block;
 }
 
-.menu a{
+.menu a {
     color: var(--white);
     padding: 10px 17px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1.05rem; /* Usando rem para maior responsividade */
 }
 
-/*-------Botão_de_ajude-------*/
-.menu button{
+/* Botão de Ajuda */
+.menu button {
     width: 200px;
     height: 40px;
     border: none;
@@ -71,12 +71,12 @@ body{
     border-radius: 50px;
     background-color: var(--dark-blue);
     color: var(--white);
-    font-size: 15px;
+    font-size: 1rem;
     cursor: pointer;
 }
 
-/*-------Menu_Hamburguer-------*/
-.menu .botao{
+/* Menu Hamburguer */
+.menu .botao {
     width: 40px;
     height: 40px;
     border-radius: 10px;
@@ -84,36 +84,38 @@ body{
     display: none;
 }
 
-/*-------Logo-------*/
-.menu img{
+/* Logo */
+.menu img {
     width: 76px;
     height: 70px;
     margin-left: 30px;
 }
 
 /*-------Banner-------*/
-.banner{
+.banner {
     width: 100%;
     height: 50vh;
 }
 
-.opcoes{
-  width: 100%;
-  background-color: #095f72;
+/* Opções do Menu */
+.opcoes {
+    width: 100%;
+    background-color: var(--dark-blue);
 }
 
-.opt:hover{
+.opt:hover {
     background-color: rgba(119, 136, 153, 0.61);
 }
 
-.opt{
-  text-decoration: none;
-  font-size: 130%;
-  color: azure;
-  margin-left: 13%;
-  font-family: Arial, Helvetica, sans-serif;
+.opt {
+    text-decoration: none;
+    font-size: 1.3rem; /* Usando rem para garantir a responsividade */
+    color: azure;
+    margin-left: 13%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Layout Pinterest */
 .pinterest-layout {
     max-width: 1200px;
     margin: 0 auto;
@@ -123,7 +125,7 @@ body{
 }
 
 .card {
-    background-color:#14c4eccc;
+    background-color: #14c4eccc;
     margin-bottom: 1rem;
     border-radius: 8px;
     overflow: hidden;
@@ -140,7 +142,7 @@ body{
 .card p {
     font-family: Arial, Helvetica, sans-serif;
     padding: 1rem;
-    font-size: 15px;
+    font-size: 1rem; /* Usando rem para fontes mais responsivas */
     color: #080808;
 }
 
@@ -148,14 +150,15 @@ body{
     transform: scale(1.05);
 }
 
-.raca{
+.raca {
     font-family: Arial, Helvetica, sans-serif;
     padding: 1rem;
-    font-size: 15px;
+    font-size: 1rem; /* Usando rem */
     color: #080808;
 }
 
-/* Lightbox - Overlay */
+/*-------Lightbox-------*/
+/* Overlay */
 .lightbox-overlay {
     position: fixed;
     top: 0;
@@ -163,7 +166,7 @@ body{
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    display: none;
+    display: none; /* Inicialmente oculto */
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -171,17 +174,97 @@ body{
 
 /* Imagem do Lightbox */
 .lightbox-image {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
 }
 
 /* Botão de Fechar */
 .close {
     position: absolute;
     top: 20px;
-    right: 20px;
-    font-size: 30px;
+    right: 30px;
+    font-size: 3rem;
     color: white;
     cursor: pointer;
     font-weight: bold;
+    z-index: 2000; /* Para garantir que o botão fique acima da imagem */
+}
+
+/* Botões dentro do Lightbox */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--dark-blue);
+}
+
+/* Estilo do formulário de adoção/apadrinhamento */
+#form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#form-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--dark-blue);
+}
+
+#form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#form-container label {
+    font-size: 1rem;
+    color: #333;
+    text-align: left;
+}
+
+#form-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#form-container button[type="submit"] {
+    padding: 12px 20px;
+    background-color: var(--blue);
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#form-container button[type="submit"]:hover {
+    background-color: var(--dark-blue);
+}
+
+/* Quando o formulário está visível */
+#form-container.show {
+    display: block;
+}
+
+/* Quando o formulário está oculto */
+#form-container.hide {
+    display: none;
 }

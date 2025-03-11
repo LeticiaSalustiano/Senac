@@ -47,6 +47,7 @@ $Link->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="cadastro.css">
     <title>Solicitações</title>
 </head>
@@ -80,7 +81,7 @@ $Link->close();
             <?php foreach ($usuarios as $usuario): ?>
                 <tr>
                     <td><?= htmlspecialchars($usuario['nome']) ?></td>
-                    <td><?= htmlspecialchars($usuario['idade']) ?></td>
+                    <td><?= htmlspecialchars($usuario['data_nascimento']) ?></td>
                     <td><?= htmlspecialchars($usuario['telefone']) ?></td>
                     <td><?= htmlspecialchars($usuario['email']) ?></td>
                     <td><?= htmlspecialchars($usuario['tipo_cadastro']) ?></td>
@@ -101,9 +102,13 @@ $Link->close();
 </table>
 
 <div class="banner2">
-    <h1>Desenvolvido por</h1>
-    <h1 id="font">LDGL</h1>
-</div>
+        <h1>Desenvolvido por <span id="font">LDGL</span></h1>
+        <div class="redes">
+            <a href="https://pt-br.facebook.com/"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/"><i class='bx bxl-instagram'></i></a>
+            <a href="https://web.whatsapp.com/"><i class='bx bxl-whatsapp'></i></a>
+        </div>
+    </div>
 
 </body>
 </html>
@@ -226,23 +231,54 @@ a{
 }
 
 /*-------Banner2-------*/
-.banner2 {
+.banner2{
     width: 100%;
-    height: 8vh;
+    height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: var(--blue);
     color: var(--white);
-    margin-top: 100px;
+    margin-top: 150px;
     font-family: "Zen Kaku Gothic New";
     font-weight: 400;
     gap: 10px;
+    padding: 0 20px;
 }
-
-/*-------Fonte Personalizada (Quantum)-------*/
-#font {
+ 
+/*-------Fonte-------*/
+#font{
     font-family: 'quantum';
 }
-
+ 
+/*---Redes---*/
+.redes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+ 
+.redes a{
+    text-decoration: none;
+    color: var(--white);
+}
+ 
+.redes i{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-blue);
+    border-radius: 50%;
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+ 
+.redes i:hover{
+    color: var(--blue);
+}
+ 
 </style>

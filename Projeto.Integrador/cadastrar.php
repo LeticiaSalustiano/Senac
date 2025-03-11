@@ -14,7 +14,7 @@ if ($Link->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = mysqli_real_escape_string($Link, $_POST['nome']);
-    $idade = mysqli_real_escape_string($Link, $_POST['idade']);
+    $data_nascimento = mysqli_real_escape_string($Link, $_POST['idade']);
     $telefone = mysqli_real_escape_string($Link, $_POST['telefone']);
     $cpf = mysqli_real_escape_string($Link, $_POST['cpf']);
     $email = mysqli_real_escape_string($Link, $_POST['email']);
@@ -29,14 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ensure the connection is established and not closed prematurely
     if ($Link instanceof mysqli) {
         // Prepare the SQL query
-        $sql = "INSERT INTO usuarios (nome, idade, telefone, cpf, email, endereco, complemento, data_cadastro, tipo_cadastro, status)
-                VALUES ('$nome', '$idade', '$telefone', '$cpf', '$email', '$endereco', '$complemento', '$data_cadastro', '$tipo_cadastro', '$status')";
+        $sql = "INSERT INTO usuarios (nome, data_nascimento, telefone, cpf, email, endereco, complemento, data_cadastro, tipo_cadastro, status)
+                VALUES ('$nome', '$data_nascimento', '$telefone', '$cpf', '$email', '$endereco', '$complemento', '$data_cadastro', '$tipo_cadastro', '$status')";
 
       if ($Link->query($sql) === TRUE) {
           // Redirect to the main page after successful registration
         echo "<script>
                    alert('Cadastro realizado com sucesso!');
-                   window.location.href = '../paginainicial.html';
+                   window.location.href = './paginainicial.html';
             </script>";
        } else {
               echo "Erro: " . $sql . "<br>" . $Link->error;

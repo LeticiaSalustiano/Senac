@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Feiras de Adoção de Animais</title>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
@@ -65,10 +66,13 @@ function generateQRCode(url, elementId) {
 </script>
 
 <div class="banner2">
-        <h1>Desenvolvido por</h1>
-        <h1 id="font">LDGL</h1>
+        <h1>Desenvolvido por <span id="font">LDGL</span></h1>
+        <div class="redes">
+            <a href="https://pt-br.facebook.com/"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/"><i class='bx bxl-instagram'></i></a>
+            <a href="https://web.whatsapp.com/"><i class='bx bxl-whatsapp'></i></a>
+        </div>
     </div>
-
 
 </body>
 </html>
@@ -117,7 +121,6 @@ body {
     padding: 20px;
 }
 
-/*-------Botão Voltar-------*/
 .menu button {
     width: 200px;
     height: 40px;
@@ -154,7 +157,7 @@ body {
 }
 
 .titulo {
-    width: 94%;
+    width: 90%;
     height: 30vh;
     display: flex;
     align-items: center;
@@ -212,13 +215,11 @@ body {
 }
 
 #qrcode1 {
-    margin-top: 20px
-    
+    margin-top: 20px;
 }
 
 #qrcode2 {
-    margin-top: 20px
-    
+    margin-top: 20px;
 }
 
 button {
@@ -236,27 +237,203 @@ button:hover {
 }
 
 /*-------Banner2-------*/
-.banner2 {
+.banner2{
     width: 100%;
-    height: 4vh;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--blue);
+    color: var(--white);
+    margin-top: 150px;
+    font-family: "Zen Kaku Gothic New";
+    font-weight: 400;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+/*-------Fonte-------*/
+#font{
+    font-family: 'quantum';
+}
+
+/*---Redes---*/
+.redes{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--blue);
+    gap: 5px;
+}
+
+.redes a{
+    text-decoration: none;
     color: var(--white);
-    margin-top: 90px;
-    font-family: "Zen Kaku Gothic New";
-    font-size: 10px;
-    gap: 10px;
+}
+
+.redes i{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-blue);
+    border-radius: 50%;
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.redes i:hover{
+    color: var(--blue);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 1024px) {
+    .menu {
+        padding: 15px;
+    }
+
+    .menu a {
+        font-size: 16px;
+    }
+
+    .titulo h1 {
+        font-size: 35px;
+    }
+
+    .titulo h2 {
+        font-size: 24px;
+    }
+
+    .titulo p {
+        font-size: 18px;
+    }
+
+    .feira {
+        width: 90%;
+    }
+
+    .feira h3 {
+        font-size: 28px;
+    }
+
+    .feira p {
+        font-size: 18px;
+    }
+
+    .banner2 {
+        height: 15vh;
+        padding: 0 30px;
+    }
+
+    .redes i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .feira-lista {
-        width: 100%;
-        padding: 10px;
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 15px 20px;
     }
+
+    .menu a {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .menu button {
+        width: 100%;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .feira-lista {
+        padding: 15px;
+    }
+
     .feira {
         width: 100%;
+        padding: 12px;
+    }
+
+    .titulo {
+        width: 90%;
+        height: auto;
+        margin: 30px;
+        text-align: center;
+    }
+
+    .titulo h1 {
+        font-size: 36px;
+    }
+
+    .titulo h2 {
+        font-size: 24px;
+    }
+
+    .titulo p {
+        font-size: 18px;
+    }
+
+    .redes i {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+
+    .banner2 {
+        height: 12vh;
+        padding: 0 15px;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        padding: 10px;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+    .feira-lista {
+        padding: 10px;
+    }
+
+    .feira {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .titulo h1 {
+        font-size: 28px;
+    }
+
+    .titulo h2 {
+        font-size: 20px;
+    }
+
+    .titulo p {
+        font-size: 16px;
+    }
+
+    .banner2 {
+        height: 15vh;
+        padding: 0 10px;
+    }
+
+    .redes i {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
     }
 }
 

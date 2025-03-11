@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: painel.php");
         exit;  // Não se esqueça de chamar exit após o redirecionamento de header para parar a execução do script
     } else {
-        echo "Usuário ou senha inválidos.";
+        echo 'Usuário ou senha inválidos.';
     }
 }
 ?>
