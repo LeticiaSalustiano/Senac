@@ -157,8 +157,7 @@ body {
     color: #080808;
 }
 
-/*-------Lightbox-------*/
-/* Overlay */
+/*------- Lightbox Overlay -------*/
 .lightbox-overlay {
     position: fixed;
     top: 0;
@@ -172,99 +171,172 @@ body {
     z-index: 1000;
 }
 
-/* Imagem do Lightbox */
+/* Imagem no Lightbox */
 .lightbox-image {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10px;
+    max-width: 74%;
+    max-height: 74%;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+   
 }
 
 /* Botão de Fechar */
 .close {
     position: absolute;
     top: 20px;
-    right: 30px;
-    font-size: 3rem;
+    right: 70px;
+    font-size: 3.5rem;
     color: white;
     cursor: pointer;
     font-weight: bold;
-    z-index: 2000; /* Para garantir que o botão fique acima da imagem */
+    border: none;
+    background: transparent;
+    z-index: 2000; /* Para ficar acima de tudo */
+    transition: color 0.3s ease-in-out;
 }
 
-/* Botões dentro do Lightbox */
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: var(--blue);
+.close:hover {
+    color: #ff5757; /* Cor de destaque ao passar o mouse */
+}
+
+/* Botões de Ação */
+.btn2 {
+    margin-top: 33%;
+    margin-left: 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007BFF; /* Azul vibrante */
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: var(--dark-blue);
+.btn2:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Leve efeito de levantar */
 }
 
-/* Estilo do formulário de adoção/apadrinhamento */
+/*------- Formulário Container -------*/
 #form-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
+    display: none; /* Oculto inicialmente */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
 }
 
 #form-container h3 {
-    font-size: 1.5rem;
     margin-bottom: 20px;
-    color: var(--dark-blue);
-}
-
-#form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#form-container label {
-    font-size: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
     color: #333;
-    text-align: left;
+    font-family: 'Arial', sans-serif;
+    border-bottom: 2px solid var(--dark-blue);
+    padding-bottom: 10px;
 }
 
 #form-container input {
-    padding: 10px;
-    font-size: 1rem;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-#form-container button[type="submit"] {
-    padding: 12px 20px;
-    background-color: var(--blue);
+#form-container input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Botão do Formulário */
+#form-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--dark-blue);
     color: white;
-    font-size: 1.1rem;
     border: none;
-    border-radius: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-#form-container button[type="submit"]:hover {
-    background-color: var(--dark-blue);
+#form-container button:hover {
+    background-color: var(--blue);
 }
 
-/* Quando o formulário está visível */
-#form-container.show {
-    display: block;
+/* Responsividade para o Formulário */
+@media (max-width: 500px) {
+    #form-container {
+        width: 90%; /* Largura ajustada para dispositivos menores */
+    }
+}
+@media (max-width: 1200px) {
+    .lightbox-image {
+        max-width: 70%;
+        max-height: 70%;
+        margin-left: 3%;
+    }
+
+    #adotar{
+        position: absolute;
+        top: 40%;
+        left: 70%;
+     }
+ 
+     #apadrinhar{
+         position: absolute;
+         top: 40%;
+         left: 50%;
+      }
+
+    .close {
+        font-size: 3rem;
+        top: 15px;
+        right: 50px;
+    }
 }
 
-/* Quando o formulário está oculto */
-#form-container.hide {
-    display: none;
+@media (max-width: 768px) {
+    .lightbox-image {
+        max-width: 90%;
+        max-height: 90%;
+        margin-left: 1%;
+    }
+
+    #adotar{
+       position: absolute;
+       top: 59%;
+       left: 67%;
+    }
+
+    #apadrinhar{
+        position: absolute;
+        top: 59%;
+        left: 30%;
+     }
+
+    .close {
+        font-size: 2.5rem;
+        top: 10px;
+        right: 30px;
+    }
 }
+

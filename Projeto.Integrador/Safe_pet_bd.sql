@@ -13,8 +13,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     complemento VARCHAR(255),
     tipo_cadastro VARCHAR(50) NOT NULL, -- "colaborador", "padrinho", "voluntario"
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(20),
-    perfil VARCHAR(20) DEFAULT 'Usuario' -- Adicionar coluna perfil
+    status VARCHAR(20)
 );
 
 drop table usuarios;
