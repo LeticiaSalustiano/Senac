@@ -111,7 +111,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 20%;
     border-top: 2px solid rgba(0, 0, 0, 0.13);
     font-family: var(--fonte2);
 }
@@ -160,6 +160,7 @@ body{
 }
 
 .info h3{
+    margin-top: 50px;
     font-size: 30px;
 }
 
@@ -207,7 +208,7 @@ body{
 
 /*-------Banner_lateral-------*/
 .banner_lateral{
-    width: 50%;
+    width: 30%;
     height: 100vh;
     display: flex;
     align-items: center;

@@ -18,8 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefone = mysqli_real_escape_string($Link, $_POST['telefone']);
     $cpf = mysqli_real_escape_string($Link, $_POST['cpf']);
     $email = mysqli_real_escape_string($Link, $_POST['email']);
-    $endereco = mysqli_real_escape_string($Link, $_POST['endereco']);
-    $complemento = mysqli_real_escape_string($Link, $_POST['complemento']);
     $tipo_cadastro = mysqli_real_escape_string($Link, isset($_POST['tipoCadastro']) ? $_POST['tipoCadastro'] : '');
     
     // Definir status inicial como 'pendente' e a data atual
@@ -30,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($Link instanceof mysqli) {
         // Prepare the SQL query
         $sql = "INSERT INTO usuarios (nome, data_nascimento, telefone, cpf, email, endereco, complemento, data_cadastro, tipo_cadastro, status)
-                VALUES ('$nome', '$data_nascimento', '$telefone', '$cpf', '$email', '$endereco', '$complemento', '$data_cadastro', '$tipo_cadastro', '$status')";
+                VALUES ('$nome', '$data_nascimento', '$telefone', '$cpf', '$email', '$data_cadastro', '$tipo_cadastro', '$status')";
 
       if ($Link->query($sql) === TRUE) {
           // Redirect to the main page after successful registration

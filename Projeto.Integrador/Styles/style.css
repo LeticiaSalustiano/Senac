@@ -100,6 +100,37 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    background-color: var(--light-blue);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+}
+
+.cadastro a {
+    font-family: "Roboto Slab", sans-serif;
+    font-size: 18px;
+    color: var(--dark-blue);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: var(--blue);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.cadastro a:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
  
 .apoiadores {
     text-align: center;
@@ -409,6 +440,11 @@ body{
     color: var(--blue);
 }
  
+.disabled {
+    pointer-events: none;
+    color: gray;
+    text-decoration: none;
+}
 
 /*-------Responsividade para diferentes tamanhos de tela-------*/
 @media screen and (max-width: 1320px) {

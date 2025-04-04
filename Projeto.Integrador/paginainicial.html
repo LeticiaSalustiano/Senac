@@ -17,13 +17,43 @@
             <li><a href="./metodos.html">MÉTODOS</a></li>
             <li><a href="./ajudar.html">COMO POSSO AJUDAR?</a></li>
             <li><a href="./contato.html">CONTATO</a></li>
-            <button><a href="./cadastro.html">Cadastre-se</a></button>
         </ul>
         <button class="botao" id="menubutton"><span class="material-symbols-outlined">menu</span></button>
     </nav>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Verificar se o usuário está cadastrado
+    const isUserRegistered = localStorage.getItem('userRegistered'); // Usando localStorage para exemplo
+
+    const menuLinks = document.querySelectorAll('#menu a');
+
+    if (!isUserRegistered) {
+        // Bloquear os links do menu
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                alert('Por favor, cadastre-se para acessar o menu!');
+            });
+            link.classList.add('disabled'); // Adiciona estilo para mostrar o estado desativado
+        });
+    }
+});
+
+// Exemplo de função de cadastro (atualiza o estado após o cadastro)
+function registerUser() {
+    localStorage.setItem('userRegistered', true);
+    alert('Cadastro realizado com sucesso! Agora você pode acessar o menu.');
+}
+
+    </script>
+
     <div class="banner" id="parallax"></div>
  
+    <div class="cadastro">
+        <a href="./cadastro.html">Não tem cadastro? Cadastre-se</a>
+    </div>
+
 <div class="apoiadores">
     <h1 >APOIADORES</h1>
     <div class="carousel">
