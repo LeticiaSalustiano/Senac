@@ -9,8 +9,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
     telefone VARCHAR(11) NOT NULL,
     cpf VARCHAR(11) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    endereco VARCHAR(255) NOT NULL,
-    complemento VARCHAR(255),
     tipo_cadastro VARCHAR(50) NOT NULL, -- "colaborador", "padrinho", "voluntario"
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(20)
