@@ -20,7 +20,7 @@
         <h1>Escolha o tipo de cadastro</h1>  
        <!-- <button onclick="mostrarFormulario('colaborador')">Colaborador</button>
         <button onclick="mostrarFormulario('padrinho')">Padrinho</button>
-        <button onclick="mostrarFormulario('voluntario')">Voluntário</button>-->
+        <button onclick="mostrarFormulario('voluntario')">Voluntário</button>-->      
         <button onclick="mostrarFormulario('usuario')">Usuário</button>
         <button onclick="window.location.href='login.php'">Adm</button>
 
@@ -45,8 +45,20 @@
                 <input type="text" id="cpf" name="cpf" placeholder="CPF: " required>
                 <input type="email" id="email" name="email" placeholder="Email: " required>
                 
-                <!-- Submit button for the form -->
-                <button type="submit">Cadastrar</button>
+                
+                <!-- Botão de submissão do formulário -->
+              <button type="submit" onclick="registerUser()">Cadastrar</button>
+
+              <Script>
+                // Função para registrar o usuário e atualizar o estado
+              function registerUser() {
+                     localStorage.setItem('userRegistered', true); // Define que o usuário está registrado
+                     alert('Cadastro realizado com sucesso! Agora você pode acessar o menu.');
+                     window.location.href = './paginainicial.html'; // Redireciona para a página inicial após o cadastro
+}
+
+              </Script>
+
             </div>
         </form>
         
@@ -81,60 +93,89 @@
 }
 
 
-        // Função de validação antes do envio do formulário
-        function validarFormulario() {
-            let idade = document.getElementById("idade").value;
-            let tel = document.getElementById("telefone").value;
-            let cpf = document.getElementById("cpf").value;
-            let email = document.getElementById("email").value;
+function validarFormulario() {
+    let idade = document.getElementById("idade").value;
+    let tel = document.getElementById("telefone").value;
+    let cpf = document.getElementById("cpf").value;
+    let email = document.getElementById("email").value;
 
-            // Validação de idade (deve ser entre 18 e 90 anos)
-            if (idade < 18 || idade > 90) {
-                alert("A idade deve estar entre 18 e 90 anos.");
-                return false;
-            }
+    // Banco local simulado para buscar usuários
+    let bancoUsuarios = [
+        { nome: "João Silva", cpf: "12345678901", email: "joao@example.com" },
+        { nome: "Maria Oliveira", cpf: "98765432100", email: "maria@example.com" },
+        { nome: "Ana Souza", cpf: "11122233344", email: "ana@example.com" }
+    ];
 
-            // Validação de telefone (deve ter 11 dígitos)
-            if (tel.length !== 11) {
-                alert("O número de telefone deve ter 11 dígitos.");
-                return false;
-            }
+    // Validação de idade
+    let dataNascimento = new Date(idade);
+    let hoje = new Date();
+    let idadeCalculada = hoje.getFullYear() - dataNascimento.getFullYear();
+    let mes = hoje.getMonth() - dataNascimento.getMonth();
+    if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+        idadeCalculada--;
+    }
 
-            // Função para validar o CPF
-            function validarCPF(cpf) {
-                if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
-                    return false;
-                }
+    if (idadeCalculada < 18 || idadeCalculada > 90) {
+        alert("A idade deve estar entre 18 e 90 anos.");
+        return false;
+    }
 
-                let soma = 0, resto;
-                for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
-                resto = (soma * 10) % 11;
-                if (resto === 10 || resto === 11) resto = 0;
-                if (resto !== parseInt(cpf.charAt(9))) return false;
+    // Validação de telefone
+    tel = tel.replace(/\D/g, ""); // Remove caracteres não numéricos
+    if (tel.length !== 11) {
+        alert("O número de telefone deve ter 11 dígitos.");
+        return false;
+    }
 
-                soma = 0;
-                for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
-                resto = (soma * 10) % 11;
-                if (resto === 10 || resto === 11) resto = 0;
-                if (resto !== parseInt(cpf.charAt(10))) return false;
-
-                return true;
-            }
-
-            if (!validarCPF(cpf)) {
-                alert("O CPF não é válido. Verifique o número e o formato.");
-                return false;
-            }
-
-            // Validação de email (deve ser um email válido)
-            let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailRegex.test(email)) {
-                alert("Por favor, insira um e-mail válido.");
-                return false;
-            }
-
-            return true; // Envia o formulário se todas as validações passarem
+    // Validação de CPF
+    cpf = cpf.replace(/\D/g, ""); // Remove caracteres não numéricos
+    function validarCPF(cpf) {
+        if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+            return false;
         }
+
+        let soma = 0, resto;
+        for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf.charAt(9))) return false;
+
+        soma = 0;
+        for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf.charAt(10))) return false;
+
+        return true;
+    }
+
+    if (!validarCPF(cpf)) {
+        alert("O CPF não é válido. Verifique o número e o formato.");
+        return false;
+    }
+
+    // Validação de email
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert("Por favor, insira um e-mail válido.");
+        return false;
+    }
+
+    // Verificar se o CPF ou e-mail já existem no banco
+    let usuarioEncontrado = bancoUsuarios.find(usuario =>
+        usuario.cpf === cpf || usuario.email === email
+    );
+
+    if (usuarioEncontrado) {
+        alert(`Usuário já cadastrado! CPF: ${usuarioEncontrado.cpf}`);
+        return false;
+    }
+
+    alert("Formulário válido e enviado!");
+    return true; // Envia o formulário se todas as validações passarem
+}
+
+
     </script>
 </body>
 </html>

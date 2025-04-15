@@ -439,12 +439,14 @@ body{
 .redes i:hover{
     color: var(--blue);
 }
- 
+
 .disabled {
     pointer-events: none;
     color: gray;
     text-decoration: none;
 }
+
+ 
 
 /*-------Responsividade para diferentes tamanhos de tela-------*/
 @media screen and (max-width: 1320px) {

@@ -20,32 +20,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysqli_real_escape_string($Link, $_POST['email']);
     $tipo_cadastro = mysqli_real_escape_string($Link, isset($_POST['tipoCadastro']) ? $_POST['tipoCadastro'] : '');
     
-    // Definir status inicial como 'pendente' e a data atual
-    $status = 'pendente';
-    $data_cadastro = date('Y-m-d | H:i:s');
+    // Verificar se o CPF já está cadastrado
+    $sql_verificar = "SELECT * FROM usuarios WHERE cpf = '$cpf'";
+    $resultado = $Link->query($sql_verificar);
 
-    // Ensure the connection is established and not closed prematurely
-    if ($Link instanceof mysqli) {
-        // Prepare the SQL query
-        $sql = "INSERT INTO usuarios (nome, data_nascimento, telefone, cpf, email, endereco, complemento, data_cadastro, tipo_cadastro, status)
-                VALUES ('$nome', '$data_nascimento', '$telefone', '$cpf', '$email', '$data_cadastro', '$tipo_cadastro', '$status')";
-
-      if ($Link->query($sql) === TRUE) {
-          // Redirect to the main page after successful registration
+    if ($resultado->num_rows > 0) {
+        // Caso o usuário já esteja cadastrado
         echo "<script>
-                   alert('Cadastro realizado com sucesso!');
-                   window.location.href = './paginainicial.html';
-            </script>";
-       } else {
-              echo "Erro: " . $sql . "<br>" . $Link->error;
-}
-
-        // Close the connection after executing the query
-        $Link->close();
+                  alert('O usuário já está cadastrado!');
+                  window.location.href = './paginainicial.html';
+              </script>";
     } else {
-          echo "Erro na conexão com o banco de dados.";
-}
-}
-?>
+        // Caso o CPF não esteja cadastrado, continuar com o processo de cadastro
+        $status = 'pendente';
+        $data_cadastro = date('Y-m-d | H:m:s');
 
+        $sql_inserir = "INSERT INTO usuarios (nome, data_nascimento, telefone, cpf, email, data_cadastro, tipo_cadastro, status)
+                        VALUES ('$nome', '$data_nascimento', '$telefone', '$cpf', '$email', '$data_cadastro', '$tipo_cadastro', '$status')";
 
+        if ($Link->query($sql_inserir) === TRUE) {
+            echo "<script>
+                      alert('Cadastro realizado com sucesso!');
+                      window.location.href = './paginainicial.html';
+                  </script>";
+        } else {
+            echo "Erro: " . $sql_inserir . "<br>" . $Link->error;
+        }
+    }
+
+    // Fechar a conexão
+    $Link->close();
+}

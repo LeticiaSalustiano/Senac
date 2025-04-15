@@ -35,9 +35,10 @@ function autoplay() {
         clearInterval(autoPlayInterval); // Para o autoplay
     }
 }
- 
+
 // Adiciona auto-play (opcional)
 const autoPlayInterval = setInterval(autoplay, 5000); // Muda de slide a cada 5 segundos
+
 
 
 

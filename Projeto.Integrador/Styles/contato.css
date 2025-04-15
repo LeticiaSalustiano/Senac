@@ -273,7 +273,6 @@ body{
 #font{
     font-family: 'quantum';
 }
-
 /*-------Responsividade-------*/
 @media screen and (max-width: 768px) {
     .menu .botao{

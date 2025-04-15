@@ -11,7 +11,7 @@
 
     <nav class="menu">
         <a href="./paginainicial.html"><img src="./imagens/Logo.png" alt="Logo"></a>
-        <button><a href="./paginainicial.html">Voltar</a></button>
+        <button><a href="./ajudar.html">Voltar</a></button>
     </nav>
 
     <div class="titulo">
